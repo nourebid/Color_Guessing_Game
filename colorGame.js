@@ -8,6 +8,25 @@ let colors = [
 ];
 
 let squares = document.querySelectorAll('.square');
+let pickedColor = colors[3];
+let colorDisplay = document.getElementById('colorDisplay');
+
+colorDisplay.textContent = pickedColor;
+
 for(let i =0; i < squares.length; i++) {
+    //add the initial colors to the squares
     squares[i].style.backgroundColor = colors[i];
+    //add click listeners to squares
+    squares[i].addEventListener('click', function(){
+        //grab the clicked color RGB
+        let clickedColor = this.style.backgroundColor;
+        console.log(clickedColor);
+        //compare the clickedColor value to the announced one in the h1
+        if (clickedColor === pickedColor) {
+            alert('Right Match');
+        } else {
+            alert('wrong match');
+        }
+    })
 }
+
