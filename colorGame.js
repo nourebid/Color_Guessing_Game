@@ -1,11 +1,4 @@
-let colors = [
-    'rgb(255, 0, 0)',
-    'rgb(255, 255, 0)',
-    'rgb(0, 255, 0)',
-    'rgb(0, 255, 255)',
-    'rgb(0, 0, 255)',
-    'rgb(255, 0, 255)'
-];
+let colors = generateRandomColors(6);
 
 let squares = document.querySelectorAll('.square');
 let pickedColor = pickColor();
@@ -45,4 +38,24 @@ const changeColors = (color) => {
 function pickColor(){
     let random = Math.floor(Math.random() * colors.length);
     return colors[random];
+}
+
+function generateRandomColors(num) {
+    //make an array
+    let arr = [];
+    //repeat num times
+    for(let i = 0; i < num; i++) {
+        //add num random colors to array
+        arr.push(randomColor());
+    }
+    //return that array
+    return arr;
+}
+
+function randomColor() {
+    //pick a 3 colors from 0 to -255 3 times to achieve the RGB
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + ", " + g + ", " + b +")";
 }
