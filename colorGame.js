@@ -8,7 +8,7 @@ let colors = [
 ];
 
 let squares = document.querySelectorAll('.square');
-let pickedColor = colors[3];
+let pickedColor = pickColor();
 let colorDisplay = document.getElementById('colorDisplay');
 let message = document.querySelector('#message');
 
@@ -25,6 +25,7 @@ for(let i =0; i < squares.length; i++) {
         //compare the clickedColor value to the announced one in the h1
         if (clickedColor === pickedColor) {
             message.textContent = 'Correct!';
+            changeColors(clickedColor);
         } else {
             this.style.backgroundColor = '#232323';
             message.textContent = 'Try Again';
@@ -32,3 +33,16 @@ for(let i =0; i < squares.length; i++) {
     })
 }
 
+const changeColors = (color) => {
+    //loop through all colors
+    for(let i = 0; i < squares.length; i++) {
+    //change each color to match the pickedColor
+        squares[i].style.backgroundColor = color;
+    }
+    
+}
+
+function pickColor(){
+    let random = Math.floor(Math.random() * colors.length);
+    return colors[random];
+}
